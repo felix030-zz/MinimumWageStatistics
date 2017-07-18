@@ -10,6 +10,7 @@ df = pd.read_excel('dataPM2015.xlsx')
 #Vor Einführung des Mindestlohns April 2014
 #Bruttolohn pro Stunde
 brutto_lohn_h_2014_vollzeit = df.get_value(11,4,takeable=True)
+print(brutto_lohn_h_2014_vollzeit)
 brutto_lohn_h_2014_teilzeit = df.get_value(12,4,takeable=True)
 brutto_lohn_h_2014_mini = df.get_value(13, 4, takeable=True)
 #Arbeitsstunden pro Woche
@@ -20,11 +21,11 @@ aSt_woche_mittel_2014_mini = df.get_value(17,4,takeable=True)
 #Reallohn (Nominallohn / Preisindex(106,5%)) in €
 #https://www.destatis.de/DE/Publikationen/Thematisch/Preise/Verbraucherpreise/VerbraucherpreisindexLangeReihenPDF_5611103.pdf?__blob=publicationFile
 preisindex_2014 = 106.6
-reallohn_2014_vollzeit = ((brutto_lohn_h_2014_vollzeit * aSt_woche_mittel_2014_vollzeit) / preisindex_2014) *100
-reallohn_2014_teilzeit = ((brutto_lohn_h_2014_teilzeit* aSt_woche_mittel_2014_teilzeit) / preisindex_2014)*100
+reallohn_2014_vollzeit = ((brutto_lohn_h_2014_vollzeit * aSt_woche_mittel_2014_vollzeit) / preisindex_2014) * 100
+reallohn_2014_teilzeit = ((brutto_lohn_h_2014_teilzeit * aSt_woche_mittel_2014_teilzeit) / preisindex_2014) * 100
 reallohn_2014_mini = ((brutto_lohn_h_2014_mini * aSt_woche_mittel_2014_mini) / preisindex_2014) * 100
-print('Reallohn Vollzeit 2014: '+ str(reallohn_2014_vollzeit))
-print('Reallohn Teilzeit 2014: '+ str(reallohn_2014_teilzeit))
+print('Reallohn Vollzeit 2014: ' + str(reallohn_2014_vollzeit))
+print('Reallohn Teilzeit 2014: ' + str(reallohn_2014_teilzeit))
 print('Reallohn Minijob 2014: ' + str(reallohn_2014_mini))
 
 #Nach Einführung des Mindestlohns April 2015 / für Mindestlohn berechtigt
