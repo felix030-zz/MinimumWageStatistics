@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from builtins import list
 import matplotlib
 matplotlib.style.use('ggplot')
+# matplotlib.style.use('dark_background')
 import numpy as np
 
 df2_FB = pd.read_excel('dataBL2015.xlsx',sheetname= 'NL')
@@ -86,9 +87,9 @@ print('Reallohn Minijob 2015 NB: ' + str(reallohn_2015_mini_nb_FB))
 
 print('Here comes the plot: \n')
 
-list_reallohn_2014_FB = [reallohn_2014_vollzeit_FB, reallohn_2014_teilzeit_FB, reallohn_2014_mini_FB]
-list_reallohn_2015_FB = [reallohn_2015_vollzeit_FB, reallohn_2015_teilzeit_FB, reallohn_2015_mini_FB]
-list_reallohn_2015_nb_FB = [reallohn_2015_vollzeit_nb_FB, reallohn_2015_teilzeit_nb_FB, reallohn_2015_mini_nb_FB]
+list_reallohn_2014_NB = [reallohn_2014_vollzeit_FB, reallohn_2014_teilzeit_FB, reallohn_2014_mini_FB]
+list_reallohn_2015_NB = [reallohn_2015_vollzeit_FB, reallohn_2015_teilzeit_FB, reallohn_2015_mini_FB]
+list_reallohn_2015_nb_NB = [reallohn_2015_vollzeit_nb_FB, reallohn_2015_teilzeit_nb_FB, reallohn_2015_mini_nb_FB]
 list_names = ['Vollzeit pro Woche','Teilzeit pro Woche','Mini Job pro Woche']
 
 list_reallohn_week_vollzeit_FB = [reallohn_2014_vollzeit_FB, reallohn_2015_vollzeit_nb_FB, reallohn_2015_vollzeit_FB]
@@ -213,3 +214,17 @@ autolabel(rects3, ax)
 
 plt.tight_layout()
 plt.show()
+
+
+df_out = [list_names, list_reallohn_2014_NB, list_reallohn_2015_NB, list_reallohn_2015_nb_NB,list_reallohn_week_vollzeit_FB_diff]
+
+df_out = pd.DataFrame(
+    {'Index':list_names,
+    'Reallohn 2014': list_reallohn_2014_NB,
+    'Reallohn 2015 NB': list_reallohn_2015_nb_NB,
+    'Reallohn 2015': list_reallohn_2015_NB
+    })
+df_out.set_index('Index', inplace=True)
+
+df_out.to_csv('reallohn.csv', index=False)
+df_out.to_html('reallohn.html',index=False)

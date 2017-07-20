@@ -3,9 +3,12 @@ import matplotlib.pyplot as plt
 from builtins import list
 import matplotlib
 matplotlib.style.use('ggplot')
+# matplotlib.style.use('dark_background')
 import numpy as np
 
 df = pd.read_excel('dataPM2015.xlsx')
+
+
 
 #Vor Einführung des Mindestlohns April 2014
 #Bruttolohn pro Stunde
@@ -206,6 +209,7 @@ def autolabel(rects, ax):
         print(str(rect.get_height()))
         # Fraction of axis height taken up by this rectangle
         p_height = (height / y_height)
+        
         # If we can fit the label above the column, do that;
         # otherwise, put it inside the column.
         if p_height > 0.95:  # arbitrary; 95% looked good to me.
